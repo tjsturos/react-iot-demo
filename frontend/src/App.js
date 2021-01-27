@@ -3,13 +3,16 @@ import { Admin, Resource } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 import './App.css';
 
-import { DeviceList } from './components/DeviceList'
+import DeviceList from './components/Device/DeviceList'
+import DeviceCreate from './components/Device/DeviceCreate'
+import DeviceEdit from './components/Device/DeviceEdit'
 
 function App() {
   return (
     <div className="App">
-      <Admin dataProvider={jsonServerProvider('https://jsonplaceholder.typicode.com')}>
-        <Resource name="posts" list={DeviceList} />
+      <Admin dataProvider={jsonServerProvider('http://localhost:3001')}>
+        <Resource name="devices" list={DeviceList} create={DeviceCreate} edit={DeviceEdit} />
+        <Resource name="models" />
       </Admin>
     </div>
   );

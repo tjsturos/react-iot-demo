@@ -1,23 +1,12 @@
 const express = require('express')
-var mysql = require('mysql')
 
 const app = express()
-const port = 3000
+app.use(express.json())
+const port = 3001
 
-var connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'dbuser',
-  password: 's3kreee7',
-  database: 'my_db'
-})
-connection.connect()
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+require('./routes')(app)
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`React-IoT Demo app is running on http://localhost:${port}`)
 })
 
-connection.end()
