@@ -21,7 +21,7 @@ module.exports = function(app) {
   })
 
   app.use((req, res, next) => {
-    console.debug(req.method, req.originalUrl)
+    console.debug(req.method, req.originalUrl, req.body)
     next()
   })
 
