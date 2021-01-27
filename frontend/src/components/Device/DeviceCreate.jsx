@@ -1,12 +1,24 @@
 import * as React from "react";
-import { SelectInput, Create, SimpleForm, TextInput, ReferenceInput, useNotify, useRedirect, number, required } from 'react-admin';
+import {
+    SelectInput,
+    Create,
+    SimpleForm,
+    TextInput,
+    ReferenceInput,
+    useNotify,
+    useRedirect,
+    number,
+    required,
+    useTranslate,
+} from 'react-admin';
 
 const DeviceCreate = (props) => {
     const notify = useNotify();
     const redirect = useRedirect();
+    const translate = useTranslate()
 
-    const onSuccess = ({ data }) => {
-        notify(`Device "${data.name}" was created`)
+    const onSuccess = () => {
+        notify(translate('Device was created!'))
         redirect('/devices');
     };
     return (
@@ -14,7 +26,7 @@ const DeviceCreate = (props) => {
             <SimpleForm>
                 <TextInput source="name" validate={required()} />
                 <TextInput source="serial" validate={[required(), number()]} />
-                <ReferenceInput label="Model" source="model" reference="models">
+                <ReferenceInput label={translate("Model")} source="model_id" reference="models">
                     <SelectInput validate={required()} optionText="name" />
                 </ReferenceInput>
             </SimpleForm>

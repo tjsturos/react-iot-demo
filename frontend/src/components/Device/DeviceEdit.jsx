@@ -1,7 +1,19 @@
 import * as React from "react";
-import { SaveButton, DeleteButton, Toolbar, required, number, SelectInput, Edit, SimpleForm, TextInput, ReferenceInput, useNotify, useRedirect } from 'react-admin';
-
+import {
+    SaveButton,
+    DeleteButton,
+    Toolbar,
+    required,
+    number,
+    SelectInput,
+    Edit,
+    SimpleForm,
+    TextInput,
+    ReferenceInput,
+    useTranslate
+} from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
+
 const DeviceTitle = ({ name }) => {
     return <span>{name}</span>
 }
@@ -21,20 +33,13 @@ const CustomToolbar = props => (
 );
 
 const DeviceEdit = (props) => {
-    // const notify = useNotify();
-    // const redirect = useRedirect();
-
-    // const onSuccess = (data) => {
-    //     notify(`Device was updated`)
-    //     redirect('/devices');
-    // };
-
+    const translate = useTranslate()
     return (
         <Edit title={<DeviceTitle />} {...props}>
             <SimpleForm toolbar={<CustomToolbar />}>
                 <TextInput source="name" validate={required()}/>
                 <TextInput source="serial" validate={[required(), number()]}/>
-                <ReferenceInput label="Model" source="model" reference="models">
+                <ReferenceInput label={translate("Model")} source="model_id" reference="models">
                     <SelectInput optionText="name" />
                 </ReferenceInput>
             </SimpleForm>

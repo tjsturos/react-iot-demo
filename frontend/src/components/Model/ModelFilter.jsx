@@ -1,11 +1,14 @@
-import { Filter, ReferenceInput, SelectInput} from 'react-admin';
+import { Filter, ReferenceInput, SelectInput, useTranslate } from 'react-admin';
 
-const ModelFilter = (props) => (
-    <Filter {...props}>
-        <ReferenceInput label="Model" source="model_id" reference="models" allowEmpty alwaysOn>
-            <SelectInput optionText="name" />
-        </ReferenceInput>
-    </Filter>
-);
+const ModelFilter = (props) => {
+    const translate = useTranslate()
+    return (
+        <Filter {...props}>
+            <ReferenceInput label={translate("Model")} source="model_id" reference="models" allowEmpty alwaysOn>
+                <SelectInput optionText="name" />
+            </ReferenceInput>
+        </Filter>
+    )
+}
 
 export default ModelFilter

@@ -6,7 +6,7 @@ module.exports = function (connection, data) {
             `UPDATE devices
                 SET name = '${data.name}',
                     serial = '${data.serial}',
-                    model = ${data.model}
+                    model_id = ${data.model_id}
                     WHERE id = ${data.id}`,
             function(error, result, fields) {
                 if (error) {

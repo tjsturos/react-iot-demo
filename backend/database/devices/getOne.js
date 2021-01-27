@@ -6,7 +6,12 @@ module.exports = function (connection, id) {
                 if (error) {
                     reject(error)
                 }
-                resolve(results[0])
+                if (results.length) {
+                   resolve(results[0])
+                } else {
+                    reject('Something went funny!')
+                }
+
             }
         )
     })
