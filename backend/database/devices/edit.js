@@ -8,7 +8,7 @@ module.exports = function (connection, data) {
                     serial = '${data.serial}',
                     model_id = ${data.model_id}
                     WHERE id = ${data.id}`,
-            function(error, result, fields) {
+            function(error) {
                 if (error) {
                     reject(error)
                 }

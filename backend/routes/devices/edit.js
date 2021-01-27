@@ -7,6 +7,6 @@ module.exports = (req, res) => {
         }
         res.status(200)
         res.setHeader('Content-Type', 'application/json')
-        res.json({json: device})
+        res.json(device)
     })
 }

@@ -20,6 +20,7 @@ module.exports = function(app) {
     next()
   })
 
+  // logging requests
   app.use((req, res, next) => {
     console.debug(req.method, req.originalUrl, req.body)
     next()
