@@ -29,8 +29,8 @@ const connect = function() {
     try {
         var connection = mysql.createConnection({
           host: 'localhost',
-          user: 'root',
-          password: 'root',
+          user: 'iot_device_admin',
+          password: 'password',
           database: 'react_iot_demo'
         })
         connection.connect()
