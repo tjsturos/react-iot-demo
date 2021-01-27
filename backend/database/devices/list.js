@@ -4,8 +4,9 @@ module.exports = function(connection, sort, filter) {
       query = `SELECT * FROM devices WHERE id IN (${sort.id.join(',')}) AND removed IS NULL ORDER BY id ${sort._order || 'ASC'}`
     } else if (typeof sort.id == String) {
       query = `SELECT * FROM devices WHERE id=${sort.id} AND removed IS NULL ORDER BY id ${sort._order || 'ASC'}`
+    } else if (sort.model_id) {
+      query = `SELECT * FROM devices WHERE removed IS NULL AND model_id=${sort.model_id} ORDER BY id ${sort._order || 'ASC'}`
     } else {
-
       query = `SELECT * FROM devices WHERE removed IS NULL ORDER BY id ${sort._order || 'ASC'}`
     }
     connection.query(

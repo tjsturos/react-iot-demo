@@ -12,7 +12,7 @@ export const DeviceList = (props) => (
             <DeviceState source="state" sortable={false}/>
             <Name source="id" label="Name/ID" props sortable={true}/>
             <TextField source="serial" sortable={false} />
-            <ReferenceField sortable={false} label="Model" source="model" reference="models">
+            <ReferenceField sortable={false} label="Model" source="model_id" reference="models">
                 <TextField source="name"  />
             </ReferenceField>
             <Actions label="Actions" props/>
