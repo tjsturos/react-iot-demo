@@ -1,11 +1,14 @@
 import * as React from "react";
 import { List, Datagrid, TextField, ReferenceField, useTranslate } from 'react-admin';
 import { makeStyles } from '@material-ui/core';
+
+import Pagination from '../ReactAdmin/Pagination'
 import ModelFilter from '../Model/ModelFilter'
 import DeviceState from './State'
 import Name from './Name'
 import Actions from './Actions'
 import ListActions from '../ReactAdmin/ListActions'
+
 /**
  * The Actions text doesn't show up over the center unless you have this.
  * There is still a gap inbetween a small and medium that could be better served
@@ -43,6 +46,7 @@ export const DeviceList = (props) => {
             actions={<ListActions
             basePath="/devices"/>}
             classes={{content: classes.list}}
+            pagination={<Pagination />}
         >
             <Datagrid>
                 <DeviceState source="state" sortable={false}/>

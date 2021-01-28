@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
       color: 'white'
     },
   }));
-const MyLayout = ({children}) => {
+const MyLayout = ({children, title}) => {
     const classes = useStyles()
 
     return (
@@ -59,6 +59,7 @@ const MyLayout = ({children}) => {
             appBar={MyAppBar}
             notification={Notification}
             sidebar={MySideBar}
+            title={title}
         >
             <Typography classes={{root: classes.header}} align='left' variant="h3" component="h2">
                 Dashboard
