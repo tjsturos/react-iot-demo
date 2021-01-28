@@ -1,5 +1,5 @@
 import * as React from "react";
-import { List, Datagrid, TextField, ReferenceField, useTranslate, Pagination } from 'react-admin';
+import { List, Datagrid, TextField, ReferenceField, useTranslate } from 'react-admin';
 import { makeStyles } from '@material-ui/core';
 import ModelFilter from '../Model/ModelFilter'
 import DeviceState from './State'
@@ -13,14 +13,21 @@ import ListActions from '../ReactAdmin/ListActions'
  * specific size.
  */
 const useStyles = makeStyles(theme => ({
-    centerHeaderText: {
-        [theme.breakpoints.up('sm')]: {
-            paddingLeft: '55px'
-        },
-    },
     list: {
         'box-shadow': "none !important",
+        alignContent: "space-between"
     },
+    nameColumn: {
+        paddingRight: '18rem'
+    },
+    column: {
+        paddingRight: '7rem'
+    },
+    actionsColumn: {
+        [theme.breakpoints.up('sm')]: {
+            paddingLeft: '2rem'
+        }
+    }
 }));
 
 
@@ -39,12 +46,18 @@ export const DeviceList = (props) => {
         >
             <Datagrid>
                 <DeviceState source="state" sortable={false}/>
-                <Name source="id" label={translate("Name/ID")} props sortable={true}/>
-                <ReferenceField sortable={false} label={translate("Model")} source="model_id" reference="models">
+                <Name headerClassName={classes.nameColumn} source="id" label={translate("Name/ID")} props sortable={true}/>
+                <ReferenceField
+                    headerClassName={classes.column}
+                    sortable={false}
+                    label={translate("Model")}
+                    source="model_id"
+                    reference="models"
+                >
                     <TextField source="name"  />
                 </ReferenceField>
-                <TextField source="serial" sortable={false} />
-                <Actions label={translate("Actions")} headerClassName={classes.centerHeaderText} props/>
+                <TextField headerClassName={classes.column} source="serial" sortable={false} />
+                <Actions label={translate("Actions")} headerClassName={classes.actionsColumn} props/>
             </Datagrid>
         </List>
     )

@@ -1,7 +1,11 @@
 // in src/MyLayout.js
 import * as React from 'react';
-import { Layout, Notification, Title } from 'react-admin';
+import { Layout, Notification  } from 'react-admin';
+
 import MyAppBar from './AppBar';
+import MySideBar from './SideBar'
+import MyMenu from './Menu';
+
 import {
     Typography,
     CardContent,
@@ -9,13 +13,17 @@ import {
     CardHeader
 } from'@material-ui/core/'
 import { makeStyles } from '@material-ui/core/styles';
-import MyMenu from './Menu';
+
 const useStyles = makeStyles((theme) => ({
     root: {
-      flexGrow: 1,
+      flexGrow: 1
     },
     appFrame: {
-        marginTop: 0,
+      flexGrow: 1,
+      marginTop: 0,
+    },
+    content: {
+      marginLeft: '5rem',
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -24,10 +32,11 @@ const useStyles = makeStyles((theme) => ({
         padding: "0.5em 0 0.5em"
     },
     card: {
-        'box-shadow': '0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)'
+        'box-shadow': '0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)',
+        'max-width': "75%"
     },
     cardContent: {
-        paddingTop: '0'
+        paddingTop: '0',
     },
     title: {
       background: "#4791db",
@@ -39,8 +48,18 @@ const useStyles = makeStyles((theme) => ({
 const MyLayout = ({children}) => {
     const classes = useStyles()
 
-    return (<Layout classes={{root: classes.root}} menu={MyMenu} appBar={MyAppBar} notification={Notification} >
-        <div className={classes.appFrame}>
+    return (
+        <Layout
+            classes={{
+                root: classes.root,
+                appFrame: classes.appFrame,
+                content: classes.content
+            }}
+            menu={MyMenu}
+            appBar={MyAppBar}
+            notification={Notification}
+            sidebar={MySideBar}
+        >
             <Typography classes={{root: classes.header}} align='left' variant="h3" component="h2">
                 Dashboard
             </Typography>
@@ -50,9 +69,8 @@ const MyLayout = ({children}) => {
                     {children}
                 </CardContent>
             </Card>
-            </div>
-
-    </Layout>)
+        </Layout>
+    )
 }
 
 export default MyLayout;

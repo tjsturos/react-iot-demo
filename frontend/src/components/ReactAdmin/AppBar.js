@@ -11,7 +11,8 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
     },
     bar: {
-        background: theme.palette.info.main
+        background: theme.palette.info.main,
+        paddingTop: 0
     },
     menuButton: {
       marginLeft: theme.spacing(2.5),
@@ -27,27 +28,24 @@ const useStyles = makeStyles((theme) => ({
 const MyAppBar = props => {
     const classes = useStyles();
     return (
-        <div className={classes.root}>
-            <AppBar className={classes.bar} position="relative">
-                <Toolbar >
-                    <MenuIcon />
-                    <Typography
-                        variant="h6"
-                        color="inherit"
-                        className={classes.title}
-                    >IoT Devices</Typography>
-                    <span className={classes.spacer} />
-                    <Badge badgeContent={4} color="error" className={classes.menuButton}>
-                        <MailIcon  />
-                    </Badge>
-                    <Badge badgeContent={17} color="error" className={classes.menuButton} >
-                        <NotificationsIcon />
-                    </Badge>
-                    <PersonIcon className={classes.menuButton}/>
-                </Toolbar>
-
-            </AppBar>
-        </div>
+      <AppBar className={classes.bar} position="relative">
+          <Toolbar >
+              <MenuIcon />
+              <Typography
+                  variant="h6"
+                  color="inherit"
+                  className={classes.title}
+              >IoT Devices</Typography>
+              <span className={classes.spacer} />
+              <Badge badgeContent={4} color="error" className={classes.menuButton}>
+                  <MailIcon  />
+              </Badge>
+              <Badge badgeContent={17} color="error" className={classes.menuButton} >
+                  <NotificationsIcon />
+              </Badge>
+              <PersonIcon className={classes.menuButton}/>
+          </Toolbar>
+      </AppBar>
     );
 };
 
