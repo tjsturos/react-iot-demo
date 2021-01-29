@@ -3,6 +3,7 @@ import * as React from 'react';
 import {
     TopToolbar,
     sanitizeListRestProps,
+    useRedirect
 } from 'react-admin';
 
 import { Button, Typography } from '@material-ui/core'
@@ -17,6 +18,7 @@ const useStyles = makeStyles({
 
 const ListActions = (props) => {
     const classes = useStyles()
+    const redirect = useRedirect();
     const {
         className,
         exporter,
@@ -27,7 +29,7 @@ const ListActions = (props) => {
 
     return (
         <TopToolbar className={classes.createButton} {...sanitizeListRestProps(rest)}>
-           <Button variant="outlined"><AddIcon /> <Typography variant="button"><b>new device</b></Typography></Button>
+           <Button variant="outlined" onClick={() => redirect('/devices/create')}><AddIcon /> <Typography variant="button"><b>new device</b></Typography></Button>
         </TopToolbar>
     );
 };
